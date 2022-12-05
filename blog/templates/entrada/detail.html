@@ -23,19 +23,19 @@
 {% include "includes/header.html" %}
 
 <div class="container">
-    <div class="row ">
+    <div class="row">
         <div class="col-12">
-            <div class="row-fluid  mt-3 justify-content-center">
-                <div class="col-12 mb-2 mt-3 text-center">
+            <div class="row-fluid  mt-4 justify-content-center">
+                <div class="col-12 text-center">
                     <h2 class="text-justify text-primary">
                         {{ object.title }}
                     </h2>
                 </div>
             </div>
             <div class="row">
-                <div class="col-8">
-                    <div class="row mb-0 mt-0">
-                        <div class="col mr-3 ml-3 px-2 py-2">
+                <div class="col-10">
+                    <div class="row ">
+                        <div class="col">
                             <div class="card h-100">
                                 <div class="card-body bg-dark">
                                     <h5 class="text-white">Resumen:</h5>
@@ -45,37 +45,39 @@
 
                         </div>
                     </div>
-                    <div class="row mb-1 mt-1">
-                        <div class=" h-100">
-                            <div class="card-body h-100 ml-2 mr-2" >
-                              <p class="text-justify">
-                                  {{ entry.content |safe }}
-                              </p>
+                    <div class="row-fluid ">
+                        <div class=" ">
+                            <div class="card-body" >
+                            </div>
+                            <div class="container" style="min-height: 1000px">
+                                <p class="">
+                                    {{ entry.content |safe }}
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-4 mb-0 mt-0 ">
-                        <div class="" style="width: 20rem;">
+                <div class="col-2 ">
+                    <div class="row">
+                        <div class="col">
                             <div class="row-fluid justify-content-center">
                                 <div class="col-12">
-                                    <p class="h5">Categoria: {{ entry.category }}</p>
-                                    <p>Creado: {{ entry.created }}</p>
+                                    <p class="h5">{{ entry.category }}</p>
+                                    <p>Creado: {{ entry.created }}
                                     <p>Modificado: {{ entry.modified }}</p>
-                                    <img class="card-img-top" src="{{ entry.image.url }}" alt="Card image cap">
+                                    <img class="card-img-top " src="{{ entry.image.url }}" alt="Card image cap">
                                 </div>
                                 <div class="col-12">
                                     {% if not user.is_anonymous %}
                                     <div class="card-body mb-0 mt-1 px-1 py-1">
                                         <form class="blog-action " action="{% url 'favoritos_app:add-favoritos' entry.id %}" method="POST">{% csrf_token %}
-                                            <button type="submit" class="btn btn-block btn-primary text-white">Agregar a Favoritos</button>
+                                            <button type="submit" class="btn btn-block btn-primary text-white">Agregar</button>
                                         </form>
                                     </div>
                                     {% else %}
-
                                         <div class="card-body px-4">
                                             <p class="h5 card-title text-center">¿Quieres Guardar tus articulos?</p>
-                                            <a class="btn btn-primary btn-block btn-lg text-white" href="{% url 'users_app:user-register'%}">Registrate Ahora</a>
+                                            <a class="btn btn-primary btn-block btn-lg text-white" href="{% url 'users_app:user-register'%}">Registrate</a>
 
                                         </div>
 
@@ -84,7 +86,7 @@
                                 <div class="col-12">
                                     {% if not user.is_anonymous %}
                                     <div class="card-body mb-1 mt-0 px-1 py-1">
-                                        <a href="{% url 'entrada_app:update-entrada' entry.id %}" class="btn btn-block btn-success text-white">Editar Articulo</a>
+                                        <a href="{% url 'entrada_app:update-entrada' entry.id %}" class="btn btn-block btn-success text-white">Modificar</a>
                                     </div>
                                     {% else %}
 
@@ -100,12 +102,11 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
-{% include "includes/footer.html" %}
 {% endblock content %}

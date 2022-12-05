@@ -27,7 +27,10 @@
 			<div class="col-md-6">
 					<div class="col mb-4 mt-0 portada">
 						<div class="card h-100 " >
-						<img src="{{ portada.image.url }}" class="card-img-top mt-0" >
+							<a href="{% url 'entrada_app:entry-detail' portada.slug %}">
+								<img src="{{ portada.image.url }}" class="card-img-top mt-0" >
+
+							</a>
 						<div class="card-body">
 						<h4 class="card-title">
 							<a class="h5" href="{% url 'entrada_app:entry-detail' portada.slug %}">{{ portada.title }}</a>
@@ -43,7 +46,9 @@
 					{% for entrada in entradas_home %}
 					<div class="col mb-4">
 						<div class="card h-100">
-						<img src="{{ entrada.image.url }}">
+							<a href="{% url 'entrada_app:entry-detail' entrada.slug %}">
+								<img class="img-fluid" src="{{entrada.image.url}}">
+							</a>
 						<div class="card-body">
 							<h5 class="card-title">
 							<a href="{% url 'entrada_app:entry-detail' entrada.slug %}">{{ entrada.title | truncatechars:30}}</a>
