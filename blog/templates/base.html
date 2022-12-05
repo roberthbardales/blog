@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+
+  <!-- highlight.js-->
+  <link rel="stylesheet" 
+  href="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.14.1/plugins/codesnippet/lib/highlight/styles/monokai.css">
+ 
+  <!-- highlight.js -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <title>{% block title %}{% endblock title %}</title>
+
+  {% block description %} {% endblock description %}
+
+  {% block tags %} {% endblock tags %}
+
+  {% block css %} {% endblock css %}
+
+</head>
+<body>
+
+
+<div class="container">
+        <br><br>
+    <div class="row">
+      <div class="col-12">
+
+        {% block content %}
+
+        {% endblock content %}
+
+      </div>
+    </div>
+  </div>
+
+      <div class="text-center bg-primary text-white py-1" >
+        <p class="">Copyright © 2022 Todos los derechos reservados. </p>
+    </div>
+  
+  {% block js %}
+
+  {% endblock js %}
+
+  <script src="{% static 'js/jquery-3.4.1.slim.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+</body>
+</html>

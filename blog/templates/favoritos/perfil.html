@@ -1,0 +1,74 @@
+<!-- head para PC -->
+{% extends "favoritos/base_favoritos.html" %}
+{% load  static %}
+
+{% block content %}
+
+{% include "includes/header.html" %}
+
+
+    <div class="row justify-content-center">
+        <div class="col-4 mt-4 px-4 py-4  bg-info  d-none d-sm-block">
+            <div class="card1  text-white">
+                <div class="card-body">
+                    <div class="col">
+                        <h5>{{user.full_name}}</h5>
+                    </div>
+                    <div class="col">
+                        <p>{{user.email}}</p>
+                    </div>
+                    <div class="col">
+                        <p>{{user.ocupation}}</p>
+                    </div>
+                    <div class="col">
+                        <p>{{user.date_birth}}</p>
+                    </div>
+                    </div>
+                    <div class="col-12">
+                        <p>
+                            <a class=" btn btn-dark btn-block h5 text-white" href="">Editar Datos</a>
+                        </p>
+                        <p>
+                            <a class=" btn btn-light btn-block h5 text-dark" href="{% url 'users_app:user-update' %}">Cambiar Contraseña</a>
+
+                        </p>
+                        <p ><a class=" btn btn-danger btn-block h5 text-white" href="{% url 'users_app:user-logout' %}" class="h5">Salir</a></p>
+                    </div>
+
+            </div>
+        </div>
+        <div class="col-8 mt-3">
+            <div class="row  px-3 py-3">
+                {% for entrada in entradas_user %}
+                        <div class="card1 mb-2 border" >
+                            <div class="row ">
+                              <div class="col-md-4">
+                                <img class="img-fluid mt-5 d-block"  src="{{entrada.entry.image.url}}">
+                              </div>
+                              <div class="col-md-8">
+                                <div class="card-fluid mb-2 mt-2">
+                                  <h5 class="card-title">{{entrada.entry.title | truncatechars:100}}</h5>
+                                  <p class="card-text">{{entrada.entry.resume | truncatechars:100}}</p>
+                                  <div class="row mt-4 mr-0 ml-0">
+                                    <div class="col-6">
+                                        <a href="{% url 'entrada_app:entry-detail' entrada.entry.slug %}" class="btn btn-block btn-primary ">Ver</a>
+                                    </div>
+                                    <div class="col-6">
+                                        <form method="post" action="{% url 'favoritos_app:delete-favoritos' entrada.id %}">{% csrf_token %}
+                                            <button type="submit" class="btn btn-block btn-danger ">Eliminar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>   
+                {% endfor %}
+            </div>
+        </div>
+ </div>       
+
+
+{% include "includes/footer.html" %}
+
+{% endblock content %}

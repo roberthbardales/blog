@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% load  static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+  <!-- highlight.js-->
+  <link rel="stylesheet" 
+  href="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.14.1/plugins/codesnippet/lib/highlight/styles/monokai.css">
+ 
+  <!-- highlight.js -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+{% endblock css %}
+
+{% block js %}
+<script>
+	window.sr = ScrollReveal();
+
+  sr.reveal('.navbar', {
+	duration: 800,
+	origin: 'bottom'
+  });
+
+  sr.reveal('.aprende', {
+	duration: 1000,
+	origin: 'top',
+	distance: '300px'
+  });
+
+  sr.reveal('.portada', {
+	duration: 500,
+	origin: 'left',
+	distance: '300px',
+	viewFactor: 0.1
+  });
+  sr.reveal('.entrada', {
+	duration: 1500,
+	origin: 'bottom',
+	distance: '300px',
+	viewFactor: 0.2
+  });
+  sr.reveal('.articulos_recientes', {
+	duration: 1500,
+	origin: 'left',
+	distance: '300px',
+	viewFactor: 0.2
+  });
+
+  sr.reveal('.bienvenido', {
+	duration: 1000,
+	origin: 'bottom'
+  });
+
+  sr.reveal('.articulos', {
+	duration: 500,
+	origin: 'left',
+	distance: '300px',
+	viewFactor: 0.2
+  });
+  sr.reveal('.frase', {
+	duration: 500,
+	origin: 'left',
+	distance: '300px',
+	viewFactor: 0.2
+  });
+  sr.reveal('.', {
+	duration: 1500,
+	origin: 'bottom',
+	distance: '300px',
+	viewFactor: 0.2
+  });
+
+  sr.reveal('.albert', {
+	duration: 2000,
+	origin: 'bottom'
+  });
+
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+	anchor.addEventListener('click', function (e) {
+	  e.preventDefault();
+
+	  document.querySelector(this.getAttribute('href')).scrollIntoView({
+		behavior: 'smooth'
+	  });
+	});
+  });
+  </script>
+{% endblock js %}

@@ -1,0 +1,111 @@
+<!-- head para PC -->
+{% extends "entrada/base_entrada.html" %}
+{% load  static %}
+
+{% block title %}
+{{ entry.title }}
+{% endblock title %}
+
+
+{% block description %}
+<meta name="description" content="{{ entry.resume }}">
+{% endblock description %}
+{% block tags %}
+<meta name="keywords" content="
+    {% for t in entry.tag.all %}
+        {{ t.name }} ,
+    {% endfor %}
+">
+{% endblock tags %}
+
+{% block content %}
+
+{% include "includes/header.html" %}
+
+<div class="container">
+    <div class="row ">
+        <div class="col-12">
+            <div class="row-fluid  mt-3 justify-content-center">
+                <div class="col-12 mb-2 mt-3 text-center">
+                    <h2 class="text-justify text-primary">
+                        {{ object.title }}
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <div class="row mb-0 mt-0">
+                        <div class="col mr-3 ml-3 px-2 py-2">
+                            <div class="card h-100">
+                                <div class="card-body bg-dark">
+                                    <h5 class="text-white">Resumen:</h5>
+                                <p class="card-title text-white text-justify">{{ entry.resume }}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row mb-1 mt-1">
+                        <div class=" h-100">
+                            <div class="card-body h-100 ml-2 mr-2" >
+                              <p class="text-justify">
+                                  {{ entry.content |safe }}
+                              </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 mb-0 mt-0 ">
+                        <div class="" style="width: 20rem;">
+                            <div class="row-fluid justify-content-center">
+                                <div class="col-12">
+                                    <p class="h5">Categoria: {{ entry.category }}</p>
+                                    <p>Creado: {{ entry.created }}</p>
+                                    <p>Modificado: {{ entry.modified }}</p>
+                                    <img class="card-img-top" src="{{ entry.image.url }}" alt="Card image cap">
+                                </div>
+                                <div class="col-12">
+                                    {% if not user.is_anonymous %}
+                                    <div class="card-body mb-0 mt-1 px-1 py-1">
+                                        <form class="blog-action " action="{% url 'favoritos_app:add-favoritos' entry.id %}" method="POST">{% csrf_token %}
+                                            <button type="submit" class="btn btn-block btn-primary text-white">Agregar a Favoritos</button>
+                                        </form>
+                                    </div>
+                                    {% else %}
+
+                                        <div class="card-body px-4">
+                                            <p class="h5 card-title text-center">¿Quieres Guardar tus articulos?</p>
+                                            <a class="btn btn-primary btn-block btn-lg text-white" href="{% url 'users_app:user-register'%}">Registrate Ahora</a>
+
+                                        </div>
+
+                                    {% endif %}
+                                </div>
+                                <div class="col-12">
+                                    {% if not user.is_anonymous %}
+                                    <div class="card-body mb-1 mt-0 px-1 py-1">
+                                        <a href="{% url 'entrada_app:update-entrada' entry.id %}" class="btn btn-block btn-success text-white">Editar Articulo</a>
+                                    </div>
+                                    {% else %}
+
+                                    {% endif %}
+                                </div>
+                                
+                            </div>
+                            <div class="row-fluid justify-content-center align-self-center">
+                                <div class="col-6">
+                                    <div class="card-body mb-1 mt-2 px-2 py-2">
+                                        <input type="button" class="btn-info btn-lg" onclick="history.back()" value="Volver Atrás">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% include "includes/footer.html" %}
+{% endblock content %}

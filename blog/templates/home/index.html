@@ -1,0 +1,146 @@
+<!-- head para PC -->
+{% extends "home/base_home.html" %}
+
+{% load  static %}
+
+{% block title %}
+{{ home.title }}
+{% endblock title %}
+
+{% block description %}
+<meta name="description" content="{{ home.description }}">
+{% endblock description %}
+
+{% block content %}
+
+{% include "includes/header.html" %}
+
+
+	<div class="row justify-content-center">
+		<div class="col-12">
+			<div class="aprende">
+				<p class="display-4 text-center mt-3 mb-4"> Aprende Python, Django y más</p>
+			</div>
+		</div>
+	</div>
+	<div class="row justify-content-center">
+			<div class="col-md-6">
+					<div class="col mb-4 mt-0 portada">
+						<div class="card h-100 " >
+						<img src="{{ portada.image.url }}" class="card-img-top mt-0" >
+						<div class="card-body">
+						<h4 class="card-title">
+							<a class="h5" href="{% url 'entrada_app:entry-detail' portada.slug %}">{{ portada.title }}</a>
+						</h4>
+						<p class="">{{ portada.resume|truncatechars:150 }}</p>
+
+						</div>
+					</div>
+					</div>
+			</div>
+			<div class="col-md-6">
+				<div class="row row-cols-1 row-cols-md-2 mt-0 justify-content-center entrada">
+					{% for entrada in entradas_home %}
+					<div class="col mb-4">
+						<div class="card h-100">
+						<img src="{{ entrada.image.url }}">
+						<div class="card-body">
+							<h5 class="card-title">
+							<a href="{% url 'entrada_app:entry-detail' entrada.slug %}">{{ entrada.title | truncatechars:30}}</a>
+							</h5>
+						</div>
+					</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+	</div>
+	<div class="row mb-4 justify-content-center  align-items-center">
+				<div class="col-md-10">
+
+						<div class="card h-100 shadow bienvenido">
+						<div class="card-body bg-warning">
+							<h5 class="card-title ">{{ home.about_title }}</h5>
+							<p class="card-text ">{{ home.about_text }}</p>
+				<!-- Button trigger modal -->
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+								Suscribete
+							  </button>
+
+						</div>	
+					</div>
+				</div>
+					<!-- Modal -->
+					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered " role="document">
+						<div class="modal-content text-center">
+							<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel"> Ingresa tu Correo</h5>
+							<form method="post" action="{% url 'home_app:add-suscription' %}">{% csrf_token %}
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							</div>
+							<div class="modal-body">
+							<br>
+							{{form.email}}
+							</div>
+							<div class="modal-footer">
+							<button type="submit" class="btn btn-success ml-auto">Suscribirme</button>
+							<button type="button" class="btn btn-danger mr-auto" data-dismiss="modal">Salir</button>
+							</div>
+						</form>
+						</div>
+						</div>
+					</div>
+	</div>
+
+	<div class="row mb-4 justify-content-center ">
+		<div class="col-12">
+
+			<h5 class="mb-4 display-4 text-center articulos">Articulos Recientes</h5>
+		</div>
+	</div>
+	<div class="row  row-cols-1 row-cols-md-4 justify-content-center articulos_recientes" >
+			{% for entrada in entradas_recientes %}
+			<div class="col mb-4" >
+				<div class="card h-100">
+					<img src="{{ entrada.image.url }}" ">
+					<div class="card-body" >
+						<h5 class="card-title">
+						<a  href="{% url 'entrada_app:entry-detail' entrada.slug %}">{{ entrada.title | truncatechars:40}}</a>
+					</h5>
+					<p class="card-text d-none d-sm-none d-md-block">{{ entrada.resume | truncatechars:40}}</p>
+					</div>
+					<div class="card-footer">
+						<small class="text-muted">Creado: {{ entrada.created }}</small>
+
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+	</div>
+
+	<div class="row justify-content-center  mt-4">
+		<!-- <article class="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0"> -->
+		<div class="col-8 text-center frase">
+				<blockquote class="blockquote">
+				<p class=" h7 text-primary">
+					“No lo sé, procuro no cargar mi memoria con datos que puedo encontrar en cualquier manual"
+				</p>
+				<footer class="blockquote-footer  h6">
+					Albert Einstein 
+				</footer>
+				<p class="h8">[Cuando Thomas Alva Edison le preguntó la velocidad del sonido]</p>
+				</blockquote>
+		</div>
+		<div class="col-4 mt-4 mb-4 albert">
+			<img class="img-thumbnail" style="height: 200px;" src="static/img/002.jpg" alt="">
+		</div>
+
+</div>
+
+
+{% include "includes/footer.html" %}
+
+{% endblock content %}

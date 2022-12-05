@@ -1,0 +1,72 @@
+<!-- head para PC -->
+{% extends "users/base_users.html" %}
+{% load  static %}
+
+{% block content %}
+
+{% include "includes/header.html" %}
+
+
+<div class="row mt-4 mb-4 mx-auto w-50">
+    <div class="col-12  text-light" style="background-color: rgb(0, 147, 252);">
+        
+        <div class="col-12">
+            <p class="display h2 mt-4 text-center">
+                Ingrese sus Datos
+            </p>
+        </div>
+        <div class="col-12 mb-4 mt-4">
+            <form class="form-contorl" method="post" enctype="multipart/form-data">{% csrf_token %}
+
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                    <p>Email:
+                    </p>
+                    {{ form.email }}
+                    </div>
+                    <div class="form-group col-md-6">
+                    <p>Nombres:
+                    </p>
+                    {{ form.full_name }}
+                    </div>
+                    <div class="form-group col-md-6">
+                    <p>Ocupacion:
+                    </p>
+                    {{ form.ocupation }}
+                    </div>
+                    <div class="form-group col-md-6">
+                    <p>Genero:
+                    </p>
+                    {{ form.genero }}
+                    </div>
+                    <div class="form-group col-md-6">
+                    <p>Fecha Nacimiento:
+                    </p>
+                    {{ form.date_birth }}
+                    </div>
+                    <div class="form-group col-md-12">
+                    <p>Contraseña:
+                    </p>
+                    {{ form.password1 }}
+                    </div>
+                    <div class="form-group col-md-12">
+                    <p>Repetir Contraseña:
+                    </p>
+                    {{ form.password2 }}
+                    {% for e in  form.password2.errors %}
+                      <p style="color:red;">{{ e }}</p>
+                    {% endfor %}
+                    </div>
+                    <div class="form-group col-md-12">
+                        <button class="btn btn-success btn-block" type="submit">Registrar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+</div>
+</div>
+<div class="col-12">
+    <br><br><br>
+   </div>
+
+{% endblock content %}

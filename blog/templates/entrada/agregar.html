@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% load  static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/myblog.css' %}">
+{% endblock css %}
+
+{% block content %}
+{% include "includes/header.html" %}
+<!-- action="{% url 'entrada_app:add-entrada' %}" -->
+
+<div style="background: #333841">
+    <div class="grid-container" style="background: #282c34">
+    <div class="grid-x grid-margin-x align-center">
+        <div class="cell medium-12 large-10" style="margin-top: 2em;" >
+            <div class="card" style="width: 100%;">
+                <div class=" cell small-12 card-divider">
+                    <h4>AGREGAR ENTRADA NUEVA</h4>
+                </div>
+                <div class="card-section">
+                    <form class="grid-x grid-margin-x" method="POST" enctype="multipart/form-data" style="background: #bac7cd">{% csrf_token %}
+
+                        <div class="cell large-4">
+                        <ul>
+                            <label>USUARIO
+                            {{form.user}}
+                            </label>
+                        </ul> 
+                        </div>
+                        <div class="cell large-4">
+                        <ul>
+                            <label>CATEGORIA
+                            {{form.category}}
+                            </label>
+                        </ul> 
+                        </div>
+                        <div class="cell large-4">
+                        <ul>
+                            <label>TAG
+                            {{form.tag}}
+                            </label>
+                        </ul> 
+                        </div>
+                        <div class="cell large-8">
+                        <ul>
+                            <label>TITULO
+                            {{form.title}}
+                            </label>
+                        </ul> 
+                        </div>
+                        <div class="cell large-10">
+                        <ul>
+                            <label>RESUMEN
+                            {{form.resume}}
+                            </label>
+                        </ul> 
+                        </div>
+                        <div class="cell large-12">
+                        <ul>
+                            <label>
+                            {{form.media}}
+                            </label>
+                        </ul>
+                        </div> 
+                        <div class="cell large-5">
+                        <ul>
+                            <label>CONTENIDO
+                            {{form.content}}
+                            </label>
+                        </ul> 
+                        </div>
+                        <div class="cell large-12">
+                            <ul>
+                                <label>CONTENIDO2
+                                    {{form.content2}}
+                                </label>
+                            </ul> 
+                        </div>
+                        <div class="cell large-12">
+                        <ul>
+                            <label>PUBLICO
+                            {{form.public}}
+                            </label>
+                        </ul> 
+                        </div>
+                        <div class="cell large-12">
+                        <ul>
+                            <label>IMAGEN
+                            {{form.image}}
+                            </label>
+                        </ul> 
+                        </div>
+                        <div class="cell large-12">
+                        <ul>
+                            <label>PORTADA
+                            {{form.portada}}
+                            </label>
+                        </ul></div> 
+                        <ul>
+                        <div>
+                        <div class="cell large-12">
+                        <ul>
+                            <label>IN HOME
+                            {{form.in_home}}
+                            </label>
+                        </ul> 
+                        </div>
+                        <!-- <ul><a class="success button" href="{% url 'entrada_app:add-entrada' %}" type="submit">GUARDAR</a></ul> -->
+                        <ul><button type="submit" class="button success">Guardar</button></ul>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% include "includes/footer.html" %}
+{% endblock content %}

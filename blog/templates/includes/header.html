@@ -1,0 +1,51 @@
+<!-- <nav class="navbar navbar-dark bg-primary navbar-expand-md fixed-top"> -->
+<div class="row">
+    <div class="col-12">
+
+
+        <nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top ">
+            <a class="navbar-brand d-sm-none d-md-none d-lg-block" href="#">Blog de Python</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-none d-md-block" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'home_app:index' %}">Inicio<span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'entrada_app:entry-lista' %}">Blog</a>
+                </li>
+                <li class="nav-item active">
+                    {% if not user.is_anonymous %}
+                    <a class="nav-link" href="{% url 'entrada_app:add-entrada' %}">Agregar<span class=""></span></a>
+                    {% else %}
+                    {% endif %}
+                </li>
+                <li>
+                    {% if not user.is_anonymous %}
+                    <h4><a href="{% url 'favoritos_app:perfil' %}" class="btn btn-warning">Perfil</a></h4>
+                    {% else %}
+                    <a href="{% url 'users_app:user-login' %}" class="btn btn-success">Iniciar Sesion</a>
+                    {% endif %}
+                </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Buscar Post" aria-label="Search">
+                <button class="btn btn-dark my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+            </div>
+            <div class="d-none d-lg-block d-xl-block col text-white">
+                {% if not user.is_anonymous %}
+                <div class="col-12">
+
+                <p>{{user.full_name}}</p>
+                
+                {% else %}
+                <h5>Usuario: Anonimo</h5>
+                </div>
+                {% endif %}
+            </div>
+        </nav>
+    </div>
+</div>
