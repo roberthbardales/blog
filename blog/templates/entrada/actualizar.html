@@ -10,110 +10,64 @@
 {% include "includes/header.html" %}
 
 
-<div style="background: #333841">
-    <div class="grid-container" style="background: #282c34">
-    <div class="grid-x grid-margin-x align-center">
-        <div class="cell medium-12 large-10" style="margin-top: 2em;" >
-            <div class="card" style="width: 100%;">
-                <div class=" cell small-12 card-divider">
-                    <h4>AGREGAR ENTRADA NUEVA</h4>
-                </div>
-                <div class="card-section">
-                    <form class="grid-x grid-margin-x" method="POST" enctype="multipart/form-data" style="background: #bac7cd">{% csrf_token %}
-
-                        <div class="cell large-4">
-                        <ul>
-                            <label>USUARIO
-                            {{form.user}}
-                            </label>
-                        </ul> 
-                        </div>
-                        <div class="cell large-4">
-                        <ul>
-                            <label>CATEGORIA
-                            {{form.category}}
-                            </label>
-                        </ul> 
-                        </div>
-                        <div class="cell large-4">
-                        <ul>
-                            <label>TAG
-                            {{form.tag}}
-                            </label>
-                        </ul> 
-                        </div>
-                        <div class="cell large-8">
-                        <ul>
-                            <label>TITULO
-                            {{form.title}}
-                            </label>
-                        </ul> 
-                        </div>
-                        <div class="cell large-10">
-                        <ul>
-                            <label>RESUMEN
-                            {{form.resume}}
-                            </label>
-                        </ul> 
-                        </div>
-                        <div class="cell large-12">
-                        <ul>
-                            <label>
-                            {{form.media}}
-                            </label>
-                        </ul>
-                        </div> 
-                        <div class="cell large-5">
-                        <ul>
-                            <label>CONTENIDO
-                            {{form.content}}
-                            </label>
-                        </ul> 
-                        </div>
-                        <!-- <div class="cell large-12">
-                            <ul>
-                                <label>CONTENIDO2
-                                    {{form.content2}}
-                                </label>
-                            </ul> 
-                        </div> -->
-                        <div class="cell large-12">
-                        <ul>
-                            <label>PUBLICO
-                            {{form.public}}
-                            </label>
-                        </ul> 
-                        </div>
-                        <div class="cell large-12">
-                        <ul>
-                            <label>IMAGEN
-                            {{form.image}}
-                            </label>
-                        </ul> 
-                        </div>
-                        <div class="cell large-12">
-                        <ul>
-                            <label>PORTADA
-                            {{form.portada}}
-                            </label>
-                        </ul></div> 
-                        <ul>
-                        <div>
-                        <div class="cell large-12">
-                        <ul>
-                            <label>IN HOME
-                            {{form.in_home}}
-                            </label>
-                        </ul> 
-                        </div>
-                        <ul><button type="submit" class="button success">Guardar</button></ul>
-
-                    </form>
-                </div>
-            </div>
+<div class="container border mt-4 mb-4 text-light w-75" style="background-color: rgb(0, 147, 252);">
+    <div class="row  bg-primary px-4 py-4  justify-content-center ">
+        <div class="col-12 ">
+            <p class="h3 text-center">Agregar Nuevo Post</p>
         </div>
     </div>
-</div>
+    <form class=" mt-2 mb-2 "  method="POST" enctype="multipart/form-data">{% csrf_token %}
+            <div class="form-row  mb-4 justify-content-center text-light">
+                <div class="col-2">
+                    <p>In Home:</p>
+                    {{form.in_home}}
+                </div>
+                <div class="col-2">
+                    <p>Publico:</p>
+                    {{form.public}}
+                </div>
+                <div class="col-2">
+                    <p>Portada:</p>
+                    {{form.portada}}
+                </div>
+                <div class="col-5">
+                    {{form.tag}}
+                </div>
+            </div>
+            
+            <div class="form-row justify-content-center">
+                <div class="col-6">
+                    <p>usuario</p>
+                    {{form.user}}
+                </div>
+                <div class="col-6">
+                    <p>categoria</p>
+                    {{form.category}}
+                </div>
+                    <div class="col-6">
+                        <p>titulo</p>
+                        {{form.title}}
+                    </div>
+                    <div class="col-6">
+                        <p>resumen</p>
+                        {{form.resume}}
+                    </div>
+                <div class="col-12">
+                    <h5>Contenido</h5>
+                    {{form.media}}
+                    {{form.content}}
+                </div>
+                <div class="col 12">
+                    <p>Imagen</p>
+                    {{form.image}}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-12  mt-4 mb-4 text-center">
+                    <button type="submit" class=" text-white btn btn-success btn-block">Guardar</button>
+                </div>
+            </div>
+    </form>
 </div>
 
 {% endblock content %}

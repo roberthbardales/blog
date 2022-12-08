@@ -1,0 +1,5 @@
+crear prdo.py y actvar loshosts "*"
+activar procesor en base.py
+# 'applications.procesors.home_contact',
+descomentar y crear  regsitro en la pagina principal
+y crear una entrada por lo menos

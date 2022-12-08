@@ -48,7 +48,9 @@ CKEDITOR_CONFIGS = {
     },
         'special':{
         'toolbar':'Special',
-        'height':300,
+ #You can change this based on your requirements.
+         'width': 'auto',
+        # 'height':300,
         'toolbar_Special':[
         # ['Bold','CodeSnippet'],
         ['Bold', 'Italic', 'Underline'],

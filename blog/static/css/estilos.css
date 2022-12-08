@@ -27,7 +27,9 @@ html {
 
     font-family: 'Open Sans', sans-serif; } */
 
-
+html {
+    font-size: 16px; 
+    }
 .h8{
     font-size: 1rem;
 }

@@ -26,12 +26,14 @@ class EntradaForm(forms.ModelForm):
 
             'user':forms.Select(
                 attrs={
+                'class':'form-control form-control-sm',
 
                 }
             ),
             'category':forms.Select(
                 attrs={
-
+                'class':'form-control form-control-sm',
+                
                 }
             ),
             'public':forms.CheckboxInput(
@@ -44,4 +46,24 @@ class EntradaForm(forms.ModelForm):
                     'checked':'',
                 }
             ),
+            'title':forms.TextInput(
+                attrs={
+
+                    'class':'form-control form-control-sm',
+                }
+            ),
+            'tag':forms.SelectMultiple(
+                attrs={
+
+                    'class':'form-control form-control-sm w-85',
+                }
+            ),
+            'resume':forms.Textarea(
+                attrs={
+                    'class':'form-control form-control-md',
+                    'rows':'3',
+                }
+            ),
+
         }
+

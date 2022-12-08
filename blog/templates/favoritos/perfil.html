@@ -6,9 +6,10 @@
 
 {% include "includes/header.html" %}
 
+<div class="container-fluid">
 
     <div class="row justify-content-center">
-        <div class="col-4 mt-4 px-4 py-4  bg-info  d-none d-sm-block">
+        <div class="col-sm-4 mt-4 px-4 py-4  bg-info">
             <div class="card1  text-white">
                 <div class="card-body">
                     <div class="col">
@@ -37,7 +38,7 @@
 
             </div>
         </div>
-        <div class="col-8 mt-3">
+        <div class="col-sm-8 mt-3">
             <div class="row  px-3 py-3">
                 {% for entrada in entradas_user %}
                         <div class="card1 mb-2 border" >
@@ -67,6 +68,7 @@
             </div>
         </div>
  </div>       
+</div>
 
 
 {% include "includes/footer.html" %}

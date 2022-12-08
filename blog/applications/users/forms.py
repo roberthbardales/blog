@@ -41,31 +41,31 @@ class UserRegisterForm(forms.ModelForm):
             'email': forms.EmailInput(
                 attrs={
                     'placeholder': 'Correo Electronico ...',
-                    'class':'form-control form-control-sm'
+                    'class':'form-control'
                 }
             ),
             'full_name': forms.TextInput(
                 attrs={
                     'placeholder': 'nombres ...',
-                    'class':'form-control form-control-sm'
+                    'class':'form-control'
                 }
             ),
             'ocupation': forms.TextInput(
                 attrs={
                     'placeholder': 'Ocupacion ...',
-                    'class':'form-control form-control-sm'                   
+                    'class':'form-control'                   
                 }
             ),
             'genero': forms.Select(
                 attrs={
                     'placeholder': 'Genero ...',
-                    'class':'form-control form-control-sm',          
+                    'class':'form-control',          
                 }
             ),
             'date_birth': forms.DateInput(
                 attrs={
                     'type': 'date',
-                    'class':'form-control form-control-sm'
+                    'class':'form-control'
                 },
             ),
         }
