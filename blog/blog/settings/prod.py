@@ -34,6 +34,7 @@ CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Custom',
+        'height':500,
         'toolbar_Custom' : [
             ['Bold', 'Italic', 'Underline'],
             ['NumberedList', 'BulletedList', '-', 'OutIdent', 'Ident', '-', 'JustifyLeft', 'JustifyRight', 'JustifyCenter'],
@@ -45,15 +46,24 @@ CKEDITOR_CONFIGS = {
         'stylesSet':[
         ],
     },
-    #     'special':{
+        'special':{
+        'toolbar':'Special',
+ #You can change this based on your requirements.
+         'width': 'auto',
+        # 'height':300,
+        'toolbar_Special':[
+        # ['Bold','CodeSnippet'],
+        ['Bold', 'Italic', 'Underline'],
+            ['NumberedList', 'BulletedList', '-', 'OutIdent', 'Ident', '-', 'JustifyLeft', 'JustifyRight', 'JustifyCenter'],
+            ['TextColor', 'Format', 'FontSize', 'Link'],
+            #['Smiley', 'Image', 'Iframe'],
+            ['Image', 'Smiley', 'Iframe'],
+            ['RemoveFormat', 'Source'],
+              ['Bold','CodeSnippet'],
+        ],
+        'extraPlugins':'codesnippet',
 
-    #     'toolbar':'Special',
-    #     'toolbar_Special':[
-    #         ['Bold','CodeSnippet'],
-    #     ],
-    #     'extraPlugins':'codesnippet',
-
-    # }
+    }
 }
 
 #configuracion basica de ckeditor
