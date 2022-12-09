@@ -23,7 +23,7 @@ from .models import Entry,Category,Tag
 class EntryListView(ListView):
     template_name = "entrada/lista.html"
     context_object_name ='entradas'
-    paginate_by = 6
+    paginate_by = 9
     
     def get_context_data(self, **kwargs):
         context = super(EntryListView, self).get_context_data(**kwargs)

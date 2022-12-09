@@ -7,9 +7,8 @@
 {% include "includes/header.html" %}
 
 <div class="container-fluid">
-
     <div class="row justify-content-center">
-        <div class="col-sm-4 mt-4 px-4 py-4  bg-info">
+        <div class="col-sm-3 mt-4 px-4 py-4  bg-info">
             <div class="card1  text-white">
                 <div class="card-body">
                     <div class="col">
@@ -31,20 +30,18 @@
                         </p>
                         <p>
                             <a class=" btn btn-light btn-block h5 text-dark" href="{% url 'users_app:user-update' %}">Cambiar Contraseña</a>
-
                         </p>
                         <p ><a class=" btn btn-danger btn-block h5 text-white" href="{% url 'users_app:user-logout' %}" class="h5">Salir</a></p>
                     </div>
-
             </div>
         </div>
-        <div class="col-sm-8 mt-3">
-            <div class="row  px-3 py-3">
+        <div class="col-sm-9 mt-3">
+            <div class="row  px-3 py-3 ">
                 {% for entrada in entradas_user %}
                         <div class="card1 mb-2 border" >
-                            <div class="row ">
+                            <div class="row justify-content-center align-items-center">
                               <div class="col-md-4">
-                                <img class="img-fluid mt-5 d-block"  src="{{entrada.entry.image.url}}">
+                                <img class="img-fluid mt-4 d-block"  src="{{entrada.entry.image.url}}">
                               </div>
                               <div class="col-md-8">
                                 <div class="card-fluid mb-2 mt-2">

@@ -24,8 +24,8 @@
 
 <div class="container-fluid">
     <div class="row mt-4">
-        <div class="col-sm-9 ">
-            <div class="col-12">
+        <div class="col-sm-10 ">
+            <div class="col-12 mb-4 border-primary">
                 <h2 class="text-center text-primary ">
                     {{ object.title }}
                 </h2>
@@ -34,50 +34,44 @@
                     <div class="card-body bg-primary">
                     <p >{{ entry.resume }}</p>
                     </div>
-            </div>
-            <div class="col-12" style="min-height: 550px">
+                </div>
+            <div class="col-12 mt-4 mb-4 border border-primary" style="min-height: 550px">
+                <p><small class="text-secondary ">Creado: {{ entry.created}}</small></p>
+
                 <p class="text-justify">
                     {{ entry.content |safe }}
                 </p>
+                    <small class="text-secondary">Modificado: {{ entry.modified}}</small><br>
             </div>
-            <div class="col-12 text">
-                <small>Modificado: {{ entry.modified}}</small>
-            </div>
-            <div class="col-12 text">
-                <small>Creado: {{ entry.created}}</small>
-            </div>
+
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <div class="col-12 ">
                 <p class="h5">{{ entry.category }}</p>
                 <img class="card-img-top " src="{{ entry.image.url }}" style="min-height: 5rem">
             </div>
             <div class="col-sm-12">
                 {% if not user.is_anonymous %}
-                <div class="card-body mb-0 mt-1 px-1 py-1">
+                <div class="card-body mb-2 mt-2 px-1 py-1">
                     <form class="blog-action " action="{% url 'favoritos_app:add-favoritos' entry.id %}" method="POST">{% csrf_token %}
-                        <button type="submit" class="btn btn-block btn-primary text-white">Agregar</button>
+                        <button type="submit" class="btn btn-block btn- btn-primary text-white">Agregar</button>
                     </form>
                 </div>
                 {% else %}
-                    <div class="card-body px-4">
-                        <p class="h5 card-title text-center">¿Quieres Guardar tus articulos?</p>
-                        <a class="btn btn-primary btn-block btn-lg text-white" href="{% url 'users_app:user-register'%}">Registrate</a>
+                <div class="card-body mt-3 mb-3 mt-1 px-1 py-1">
+                        <a class="btn btn-primary  btn-block btn-lg text-white" href="{% url 'users_app:user-register'%}">Registrate</a>
                     </div>
                 {% endif %}
             </div>
+            {% if not user.is_anonymous %}
             <div class="col-12">
-                {% if not user.is_anonymous %}
-                <div class="card-body mb-1 mt-0 px-1 py-1">
-                    <a href="{% url 'entrada_app:update-entrada' entry.id %}" class="btn btn-block btn-success text-white">Modificar</a>
+                <div class="card-body mb-2 mt-2 px-1 py-1">
+                    <a href="{% url 'entrada_app:update-entrada' entry.id %}" class="btn btn-block btn- btn-success text-white">Modificar</a>
                 </div>
-                {% else %}
-                {% endif %}
             </div>
+            {% endif %}
             <div class="col-12">
-                <div class="card-body mb-1 mt-2 px-2 py-2">
-                    <input type="button" class="btn-info btn-lg" onclick="history.back()" value="Volver Atrás">
-                </div>
+                
             </div>
         </div>
     </div>
