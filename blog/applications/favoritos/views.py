@@ -1,5 +1,3 @@
-from audioop import reverse
-from tkinter import Entry
 
 from django.urls import reverse_lazy,reverse
 
