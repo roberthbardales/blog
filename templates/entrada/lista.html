@@ -64,7 +64,7 @@
                                     {% if page_obj.has_previous %}
                                     <li class="page-item">
                                         <!-- <a href="?page={{page_obj.previous_page_number}}">Atras</a> -->
-                                        <a class="page-link" href="?page={{page_obj.previous_page_number}}" tabindex="-1">Atras</a>
+                                        <a class="page-link" href="?{{ request.GET.urlencode }}&page={{pagina}}"" tabindex="-1">Atras</a>
                                     </li>
                                     {% endif %}
                                     {% for pagina in paginator.page_range %}
@@ -74,13 +74,13 @@
                                         <a class="page-link" href="#!"> {{ pagina }}<span class="sr-only">(current)</span></a>
                                     </li>
                                     {% else %}
-                                    <li class="page-item"><a class="page-link" href="?page={{pagina}}">{{ pagina }}</a></li>
+                                    <li class="page-item"><a class="page-link" href="?{{ request.GET.urlencode }}&page={{pagina}}">{{ pagina }}</a></li>
                                     {% endifequal %}
                                     {% endfor %}
                                     {% if page_obj.has_next %}
                                     <li class="page-item">
                                         <!-- <a href="?page={{page_obj.next_page_number}}">Siguiente</a> -->
-                                        <a class="page-link" href="?page={{page_obj.next_page_number}}">Siguiente</a>
+                                        <a class="page-link" href="?{{ request.GET.urlencode }}&page={{ page_obj.next_page_number }}">Siguiente</a>
                                     </li>
                                     {% endif %}
                                 </ul>
