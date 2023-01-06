@@ -18,7 +18,7 @@ class Category(TimeStampedModel):
 
     short_name = models.CharField(
         'Nombre corto', 
-        max_length=15,
+        max_length=30,
         unique=True
     )
     name = models.CharField(
