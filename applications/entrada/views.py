@@ -16,7 +16,11 @@ from .forms import EntradaForm
 
 #
 from .models import Entry,Category,Tag
-
+#
+from applications.users.mixins import (
+    AdministradorPermisoMixin,
+    UsuarioPermisoMixin,
+)
 class EntryListView(ListView):
     template_name = "entrada/lista.html"
     context_object_name ='entradas'
@@ -34,17 +38,23 @@ class EntryListView(ListView):
         categoria= self.request.GET.get('categoria','')
         #consulta de busqueda
         resultado= Entry.objects.buscar_entrada_categoria(kword,categoria)
-        
+
         return resultado
 
+    # def get_queryset(self):
+    #     kword_general= self.request.GET.get('kword_general','')
+    #     #consulta de busqueda
+    #     resultado= Entry.objects.buscador_general(kword_general)
+    #     return resultado
 
-class EntryDetailView(DetailView):
+
+class EntryDetailView(UsuarioPermisoMixin,DetailView):
 
     template_name ='entrada/detail.html'
     model = Entry
 
 
-class AgregarEntradaCreateView(CreateView):
+class AgregarEntradaCreateView(AdministradorPermisoMixin,CreateView):
     template_name = "entrada/agregar.html"
     form_class= EntradaForm
     success_url = '/'
@@ -58,7 +68,7 @@ class AgregarEntradaCreateView(CreateView):
         return super(AgregarEntradaCreateView, self).form_valid(form)
 
 
-class ActualizarEntradaUpdateView(UpdateView):
+class ActualizarEntradaUpdateView(AdministradorPermisoMixin,UpdateView):
     template_name = "entrada/actualizar.html"
     model=Entry
     form_class= EntradaForm

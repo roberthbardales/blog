@@ -16,6 +16,11 @@ from django.views.generic import(
 from .models import Favorites
 
 from applications.entrada.models import Entry
+#
+from applications.users.mixins import (
+    AdministradorPermisoMixin,
+    UsuarioPermisoMixin,
+)
 
 class UserPageView(ListView):
 
@@ -26,14 +31,15 @@ class UserPageView(ListView):
     def get_queryset(self):
         return Favorites.objects.entradas_user(self.request.user)
 
-class AddFavoritosView(View):
+class AddFavoritosView(UsuarioPermisoMixin,View):
 
     def post(self,request,*args,**kwargs):
         #recuperar el usuario
         usuario=self.request.user
         entrada= Entry.objects.get(id=self.kwargs['pk'])
         #registramos favoritos
-        Favorites.objects.create(
+
+        Favorites.objects.get_or_create(
             user=usuario,
             entry=entrada,
         )
@@ -43,11 +49,14 @@ class AddFavoritosView(View):
             )
         )
 
-class FavoritesDeleteView(DeleteView):
+class FavoritesDeleteView(UsuarioPermisoMixin,DeleteView):
     
     model = Favorites
     success_url='.'
     success_url=reverse_lazy('favoritos_app:perfil')
 
 
-
+"""
+from applications.favoritos.models import *
+Favorites.objects.
+"""

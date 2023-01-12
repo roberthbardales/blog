@@ -50,10 +50,10 @@ class UserRegisterForm(forms.ModelForm):
                     'class':'form-control'
                 }
             ),
-            'ocupation': forms.TextInput(
+            'ocupation': forms.Select(
                 attrs={
-                    'placeholder': 'Ocupacion ...',
-                    'class':'form-control'                   
+                    'class':'form-control',       
+
                 }
             ),
             'genero': forms.Select(

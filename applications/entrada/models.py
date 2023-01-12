@@ -66,7 +66,11 @@ class Entry(TimeStampedModel):
         'Titulo', 
         max_length=200
     )
-    resume = models.TextField('Resumen')
+    resume = models.CharField(
+        'Resumen',
+        max_length=400
+        )
+
     content = RichTextUploadingField('contenido',config_name='special')
     public = models.BooleanField(default=False)
     image = models.ImageField(

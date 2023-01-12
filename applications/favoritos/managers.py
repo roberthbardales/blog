@@ -8,3 +8,14 @@ class FavoritesManager(models.Manager):
             entry__public=True,
             user=usuario
         ).order_by('-created')
+
+    def si_existe(self):
+        return self.filter(
+            entry__public=True,
+            id=72
+        )
+
+"""
+from applications.favoritos.models import *
+Favorites.objects.si_existe()
+"""

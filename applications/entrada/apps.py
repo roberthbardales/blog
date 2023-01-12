@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class EntradaConfig(AppConfig):
-    name = 'entrada'
+    name = 'applications.entrada'

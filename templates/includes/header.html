@@ -17,7 +17,7 @@
                     </li>
                     <li class="nav-item active">
                         {% if not user.is_anonymous %}
-                        <a class="nav-link" href="{% url 'entrada_app:add-entrada' %}">Agregar<span class=""></span></a>
+                        <a class="nav-link" href="{% url 'entrada_app:add-entrada' %}">Nuevo Post<span class=""></span></a>
                         {% else %}
                         {% endif %}
                     </li>
@@ -40,8 +40,8 @@
                     </li>
                         {% endif %}
                     </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Buscar Post" aria-label="Search">
+                    <form method="get" class="form-inline my-2 my-lg-0">{% csrf_token %}
+                    <input class="form-control mr-sm-2" id="kword_general" name="kword_general" type="search" placeholder="Buscador General" aria-label="Search">
                     <button class="btn btn-dark my-2 my-sm-0" type="submit">Buscar</button>
                     </form>
                 </div>

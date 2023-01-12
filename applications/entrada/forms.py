@@ -33,7 +33,6 @@ class EntradaForm(forms.ModelForm):
             'category':forms.Select(
                 attrs={
                 'class':'form-control form-control-sm',
-                
                 }
             ),
             'public':forms.CheckboxInput(
@@ -48,7 +47,6 @@ class EntradaForm(forms.ModelForm):
             ),
             'title':forms.TextInput(
                 attrs={
-
                     'class':'form-control form-control-sm',
                 }
             ),
@@ -61,9 +59,10 @@ class EntradaForm(forms.ModelForm):
             'resume':forms.Textarea(
                 attrs={
                     'class':'form-control form-control-md',
-                    'rows':'3',
+                    'rows':'2',
                 }
             ),
 
         }
+
 
