@@ -80,7 +80,7 @@
 						<div class="modal-content text-center">
 							<div class="modal-header">
 							<h5 class="modal-title" id="exampleModalLabel"> Ingresa tu Correo</h5>
-							<form method="post" action="{% url 'home_app:add-suscription' %}">{% csrf_token %}
+						<form method="post" action="{% url 'home_app:add-suscription' %}">{% csrf_token %}
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
@@ -142,8 +142,6 @@
 			<img class="img-thumbnail" style="height: 200px;" src="static/img/002.jpg" alt="">
 		</div>
 </div>
-
-
 
 {% include "includes/footer.html" %}
 

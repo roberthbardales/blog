@@ -31,28 +31,34 @@ class EntryManager(models.Manager):
         if len(categoria)> 0:
             return self.filter(
                 category__short_name=categoria,
-                title__icontains=kword,
                 public = True
             ).order_by('-created')
 
         else:
             return self.filter(
-                # Q(title__icontains=kword,) |
-                # Q(resume__icontains=kword,) |
-                # Q(content__icontains=kword,)
-                title__icontains=kword,
-                # resume__icontains=kword,
-                # content__icontains=kword,
+                Q(title__icontains=kword,) |
+                Q(resume__icontains=kword,) |
+                Q(content__icontains=kword,),
+                public = True,
+            ).order_by('-created')
+
+    def buscador_general(self,kword_general,categoria):
+        if len(categoria)> 0:
+            return self.filter(
+                category__short_name=categoria,
+                title__icontains=kword_general,
+                
                 public = True
             ).order_by('-created')
 
-    def buscador_general(self,kword_general):
-        return self.filter(
-            Q(title__icontains=kword_general,) |
-            Q(resume__icontains=kword_general,) |
-            Q(content__icontains=kword_general,),
-            public = True,
-        ).order_by('-created')
+        else:
+            return self.filter(
+                Q(title__icontains=kword_general,) |
+                Q(resume__icontains=kword_general,) |
+                Q(content__icontains=kword_general,),
+                public = True,
+            ).order_by('-created')[:50]
+
 
 
 

@@ -46,6 +46,7 @@ LOCAL_APPS = (
 THIRD_PARTY_APPS = (
     'ckeditor',
     'ckeditor_uploader',
+    'import_export',
     #'django_quill',
 )
 
@@ -109,7 +110,8 @@ AUTH_USER_MODEL = 'users.User'
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Lima'
+# TIME_ZONE = 'UTC'
 
 USE_I18N = True
 

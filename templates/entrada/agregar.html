@@ -31,18 +31,52 @@
                     {{form.portada}}
                 </div>
                 <div class="col-5">
-                    {{form.tag}}
+                    <select name="tag" class="form-control form-control-sm w-85" required="" id="id_tag" multiple="">
+                        <option value="1" selected="selected">Programacion en Python</option>
+                      
+                      </select>
                 </div>
             </div>
             
             <div class="form-row justify-content-center">
                 <div class="col-6">
                     <p>usuario</p>
-                    {{form.user}}
+                    <select name="user" class="form-control form-control-sm" required="" id="id_user">
+                        <option value="6">prueba2@gmail.com</option>
+                      
+                        <option value="7">prueba3@gmail.com</option>
+                      
+                        <option value="5">prueba1@gmail.com</option>
+                      
+                        <option value="1" selected="selected" >roberthbardales@gmail.com</option>
+                      
+                      </select>
                 </div>
                 <div class="col-6">
                     <p>categoria</p>
-                    {{form.category}}
+                    <select name="category" class="form-control form-control-sm" required="" id="id_category">
+
+                        <option value="4">JavaScript</option>
+                      
+                        <option value="1" selected="selected">Python</option>
+                      
+                        <option value="2">Postgresql</option>
+                      
+                        <option value="3">GitHub</option>
+                      
+                        <option value="9">hacking</option>
+                      
+                        <option value="12">TIPS Django</option>
+                      
+                        <option value="5">Django Basico</option>
+                      
+                        <option value="10">Django Usuarios</option>
+                      
+                        <option value="11">DJ M.Avanzados</option>
+                      
+                        <option value="6">Rest Framework</option>
+                      
+                      </select>
                 </div>
                     <div class="col-6">
                         <p>titulo</p>

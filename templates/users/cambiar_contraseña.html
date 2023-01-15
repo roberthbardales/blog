@@ -6,10 +6,28 @@
 
 {% include "includes/header.html" %}
 
-        <div class="row mt-4 mb-4 px-4 py-4 mx-auto w-50">
-            <div class="col-12 bg-primary">
-                <form class="mb-4 mt-1 px-4 py-4 mr-0 ml-0" method="post">{% csrf_token %}
-                    <h1 class="display-5 h2 mb-4 text-center text-white">Cambiar Contraseña</h1>
+<div class="container" style="min-height: 613px;">
+    <div class="row mt-4 mb-4 px-4 py-4 mx-auto w-50">
+        <div class="col-12 bg-primary">
+            <form class="mb-4 mt-1 px-4 py-4 mr-0 ml-0" method="post" enctype="multipart/form-data">{% csrf_token %}
+                <h1 class="display-5 h2 text-center text-white">Cambiar Contraseña</h1>
+                <br>
+                <p class="h5 text-white text-">Usuario : {{ user.email}}</p>
+                <p></p>
+                {{form.as_p}}
+
+                <div class="text-center px-2 py-3">
+                    <button type="submit" class="btn btn-warning btn-block" href="{% url 'users_app:user-update'%}">Cambiar Contraseña</button>
+                </div>
+            </form>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock content %}
+
                     <!-- <p class="text-white ">
                         Usuario: {{user.get_full_name}}
                     </p>
@@ -22,19 +40,3 @@
                         {{form.password2}}                        
                       </div>
                     </div> -->
-                    <div class="row">
-                        <div class="col-12">
-                            {{form.as_p}}
-                        </div>
-                    </div>
-                    <div class="text-center px-2 py-1">
-                        <a class="btn btn-warning btn-block" href="{% url 'users_app:user-register'%}">Cambiar Contraseña</a>
-                    </div>
-               </form>
-            </div>
-        </div>
-        <div class="col-12">
-         <br><br><br>
-        </div>
-
-{% endblock content %}

@@ -7,7 +7,8 @@ from django.http import HttpResponseRedirect
 
 from django.views.generic import (
     View,
-    CreateView
+    CreateView,
+    ListView,
 )
 
 from django.views.generic.edit import (
@@ -68,19 +69,18 @@ class LogoutView(View):
             )
         )
 
-
 class UpdatePasswordView(LoginRequiredMixin, FormView):
     template_name = 'users/cambiar_contraseña.html'
     form_class = UpdatePasswordForm
     success_url = reverse_lazy('users_app:user-login')
     login_url = reverse_lazy('users_app:user-login')
     
-
     def form_valid(self, form):
         usuario = self.request.user
         user = authenticate(
             email=usuario.email,
             password=form.cleaned_data['password1']
+
         )
 
         if user:
@@ -90,3 +90,13 @@ class UpdatePasswordView(LoginRequiredMixin, FormView):
 
         logout(self.request)
         return super(UpdatePasswordView, self).form_valid(form)
+    
+class UserListView(LoginRequiredMixin,ListView):
+    template_name = "users/lista_usuarios.html"
+    context_object_name = 'usuarios'
+    success_url = reverse_lazy('entrada_app:entry-lista')
+    login_url = reverse_lazy('entrada_app:entry-lista')
+
+    def get_queryset(self):
+        return User.objects.usuarios_sistema()
+    

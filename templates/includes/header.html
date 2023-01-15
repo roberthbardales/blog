@@ -19,31 +19,46 @@
                         {% if not user.is_anonymous %}
                         <a class="nav-link" href="{% url 'entrada_app:add-entrada' %}">Nuevo Post<span class=""></span></a>
                         {% else %}
+                        <span hidden="hidden">Error oculto</span>
                         {% endif %}
                     </li>
                     <li class="nav-item active">
                         {% if not user.is_anonymous %}
-                        <a href="{% url 'favoritos_app:perfil' %}" class="btn btn-warning h4">Perfil</a>
+                        <a href="{% url 'favoritos_app:perfil' %}" class="btn btn-warning h4">Ver Perfil</a>
+                        <a href="{% url 'users_app:user-logout' %}"  class="btn btn-danger h4">Salir</a>
                         {% else %}
                         <a href="{% url 'users_app:user-login' %}" class="btn btn-success">Iniciar Sesion</a>
                         {% endif %}
                     </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                    {% if not user.is_anonymous %}
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'favoritos_app:perfil' %}">{{user.full_name}}</a>
-                    </li>
-                        {% else %}
+
+                        {% if not user.is_anonymous %}
                         <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'users_app:user-login' %}">Usuario: Anonimo</a>
-                    </li>
-                        {% endif %}
+                            <a class="nav-link" href="{% url 'favoritos_app:perfil' %}">{{user.full_name}}</a>
+                        </li>
+                            {% else %}
+                            <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'users_app:user-login' %}">Usuario: Anonimo</a>
+                        </li>
+                            {% endif %}
+ 
+
                     </ul>
-                    <form method="get" class="form-inline my-2 my-lg-0">{% csrf_token %}
-                    <input class="form-control mr-sm-2" id="kword_general" name="kword_general" type="search" placeholder="Buscador General" aria-label="Search">
-                    <button class="btn btn-dark my-2 my-sm-0" type="submit">Buscar</button>
+                    <!-- <ul class="navbar-nav ml-auto">
+                        {% if not user.is_anonymous %}
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'favoritos_app:perfil' %}">{{user.full_name}}</a>
+                        </li>
+                            {% else %}
+                            <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'users_app:user-login' %}">Usuario: Anonimo</a>
+                        </li>
+                            {% endif %}
+                    </ul> -->
+                    <form method="get" action="{% url 'entrada_app:entry-lista' %}" class="form-inline my-2 my-lg-0">{% csrf_token %}
+                        <input class="form-control mr-sm-2" id="kword" name="kword" type="search" placeholder="Buscar" aria-label="Search">
+                        <button class="btn btn-dark my-2 my-sm-0" type="submit">Buscar</button>
                     </form>
+
                 </div>
             </div>
         </nav>

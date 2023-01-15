@@ -5,6 +5,12 @@ from . import views
 app_name = "entrada_app"
 
 urlpatterns = [
+
+    path(
+        'entradas_general/', 
+        views.EntryListViewBySearch.as_view(),
+        name='entry-lista-general',
+    ),
     path(
         'entradas/', 
         views.EntryListView.as_view(),

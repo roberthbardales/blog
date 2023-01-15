@@ -5,25 +5,36 @@
 {% block content %}
 
 {% include "includes/header.html" %}
-<div class="container" style="min-height: 613px;">
 
+<div class="container" style="min-height: 613px;">
     <div class="row mt-4 mb-4 px-4 py-4 mx-auto w-50">
         <div class="col-12 bg-primary">
             <form class="mb-4 mt-1 px-4 py-4 mr-0 ml-0" method="post" enctype="multipart/form-data">{% csrf_token %}
+
                 <h1 class="display-5 h2 text-center text-white">Administracion de Blog</h1>
-                <div class="col-12">
+                <!-- <div style="color:red">{{ form.ValidationError  }}</div> -->
+                <!-- <div style="color:red">{{ form.errors.as_text  }}</div> -->
+                <p style="color: red;"> {{ error }} <p>
                     {{form.as_p}}
-                </div>
                     <div class="text-center px-2 py-3">
                         <input type="submit" class="btn btn-success btn-block" value="Ingresar" />
                     </div>
                     <div class="text-center px-2 py-1">
                         <a class="btn btn-warning btn-block" href="{% url 'users_app:user-register'%}">Registrar</a>
                     </div>
-                </form>
+            </form>
             </div>
         </div>
 
     </div>
         
 {% endblock content %}
+
+                <!-- <div class="col-12">
+                    <label class="text-white" for="id_email">Email:</label>
+                    <input type="text" name="email" placeholder="Correo Electronico" class="form-control mr-sm-2" required="" id="id_email">
+                </div>
+                <div class="col-12">
+                    <label class="text-white" for="id_password">Password:</label>
+                    <input type="password" name="password" placeholder="contraseña" class="form-control mr-sm-2" required="" id="id_password">                
+                </div> -->

@@ -102,6 +102,7 @@ class LoginForm(forms.Form):
 
         if not authenticate(email=email, password=password):
             raise forms.ValidationError('Los datos de usuario no son correctos')
+            
         
         return self.cleaned_data
 
@@ -114,7 +115,7 @@ class UpdatePasswordForm(forms.Form):
         widget=forms.PasswordInput(
             attrs={
                 'placeholder': ' ',
-                'class':'form-control ',
+                'class':'form-control mr-sm-2',
             }
         )
     )
@@ -124,7 +125,18 @@ class UpdatePasswordForm(forms.Form):
         widget=forms.PasswordInput(
             attrs={
                 'placeholder': ' ',
-                'class':'form-control ',
+                'class':'form-control mr-sm-2',
             }
         )
     )
+
+    # def clean(self):
+    #     cleaned_data = super(UpdatePasswordForm, self).clean()
+    #     password1 = self.cleaned_data['password1']
+    #     password2 = self.cleaned_data['password2']
+
+    #     if not authenticate(email=password1, password=password2):
+    #         raise forms.ValidationError('La Contraseña Ingresada no es Correecta')
+            
+        
+    #     return self.cleaned_data

@@ -18,20 +18,31 @@
                         <p>{{user.email}}</p>
                     </div>
                     <div class="col">
-                        <p>{{user.ocupation}}</p>
+                        <!-- <p>{{user.ocupation}}</p> -->
+                        <p>{{user.get_ocupation_display }}</p>
                     </div>
                     <div class="col">
                         <p>{{user.date_birth}}</p>
                     </div>
-                    </div>
+
+                </div>
+                <div class="col-12">
+                        {% if not user.is_superuser %}
+ 
+                            <span hidden="hidden"></span>
+
+                        {% else %}
+                        <p>
+                            <a class=" btn btn-dark btn-block h5 text-light" href="{% url 'users_app:user-lista' %}">Listar Usuarios</a>
+                        </p>
+                        {% endif %}
+                </div>
                     <div class="col-12">
+
                         <p>
-                            <a class=" btn btn-dark btn-block h5 text-white" href="">Editar Datos</a>
+                            <a class=" btn btn-warning btn-block h5 text-dark" href="{% url 'users_app:user-update' %}">Cambiar Contraseña</a>
                         </p>
-                        <p>
-                            <a class=" btn btn-light btn-block h5 text-dark" href="{% url 'users_app:user-update' %}">Cambiar Contraseña</a>
-                        </p>
-                        <p ><a class=" btn btn-danger btn-block h5 text-white" href="{% url 'users_app:user-logout' %}" class="h5">Salir</a></p>
+                        <!-- <p ><a class=" btn btn-danger btn-block h5 text-white" href="{% url 'users_app:user-logout' %}" class="h5">Salir</a></p> -->
                     </div>
             </div>
         </div>

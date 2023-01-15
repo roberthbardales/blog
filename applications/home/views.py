@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy, reverse
 
+
 from django.views.generic import (
     TemplateView,
     CreateView,
@@ -31,9 +32,9 @@ class HomePageView(TemplateView):
         context['entradas_recientes']=Entry.objects.entradas_recientes()
         #enviamos formulario de suscripcion
         context['form']=SuscribersForm
-    
+        
         return context
-    
+
 
 class SuscriberCreateView(CreateView):
     form_class=SuscribersForm
