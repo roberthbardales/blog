@@ -6,30 +6,21 @@
 
 {% include "includes/header.html" %}
 
-<!-- <div class="container">
-	<div class="row">
-		<div class="col-12">
-            <h1>hola</h1>
-			{% for resultado in russell %}
-			{{ resultado.title }}<br>
-			{% endfor %}
-		</div>
-	</div>
-</div> -->
+<!-- col-sm-4 col-lg-5 -->
+
 <div class="container" style="min-height: 600px">
-    <div class="row ">
-        <div class="col-8">
+    <div class="row mb-4">
+        <div class="col-12">
             <br>
             <p class="h4">
                 Buscar Post
             </p> 
         </div>
     </div>
-    <div class="row mt-3">
-        <div class="col-10">
-            <div class="row">
-                <div class="col-12">
-                    <form method="get">{% csrf_token %}
+    <div class="row">
+        <div class="col-xs-4  col-sm-12 col-md-10">
+            <div>
+                    <form class="col-12" method="get">{% csrf_token %}
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" id="kword" name="kword" placeholder="Buscar...">
                             <div class="input-group-append">
@@ -38,9 +29,6 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-12">
-                </div>
-                <div class="col-12">
                     <div class="row  row-cols-1 row-cols-lg-3 mt-0" >
                         {% for entrada in entradas %}
                         <div class="col mb-4 " style="font-size: 14px;">
@@ -55,17 +43,17 @@
                                 <p>
                                     {{ entrada.resume | truncatechars:70 }}
                                 </p>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">{{ entrada.created }}</small>
+                                </div>
                             </div>
-                            <div class="card-footer">
-                                <small class="text-muted">{{ entrada.created }}</small>
-                            </div>
-                        </div>
                         </div>
                         {%empty%}
                         <h3 style="color:red;">No hay resultados</h3>
                         {% endfor %}
                     </div>
-                </div>
+ 
                 <div class="col-12 mb-4">
                         <div class="row justify-content-center mb-4">
                             {% if is_paginated %}
@@ -97,25 +85,17 @@
                             </nav>
                             {% endif %}
                         </div>
-                    </div>
-                <div class="col-12">
-                    
                 </div>
-            </div>
+
         </div>
-        <div class="col-2">
-            <div class="row">
-                <div class="col-fluid">
+        <div class="col-xs-8  col-sm-12 c col-md-2">
                     <div class="list-group">
                         <a href="#!" class="list-group-item active">Categorias</a>
                         <a href="{% url 'entrada_app:entry-lista' %}" class="list-group-item list-group-item-action">Todo</a>
                         {% for categoria in categorias %}
-                        
                         <a href="?categoria={{categoria.short_name}}" class="list-group-item list-group-item-action">{{categoria.short_name}}</a>
-                        
                         {% endfor %}
                     </div>
-                </div>
             </div>
         </div>
     </div>

@@ -6,15 +6,15 @@
 
 {% include "includes/header.html" %}
 
-<div class="container" style="min-height: 613px;">
-    <div class="row mt-4 mb-4 px-4 py-4 mx-auto w-50">
-        <div class="col-12 bg-primary">
-            <form class="mb-4 mt-1 px-4 py-4 mr-0 ml-0" method="post" enctype="multipart/form-data">{% csrf_token %}
-
-                <h1 class="display-5 h2 text-center text-white">Administracion de Blog</h1>
-                <!-- <div style="color:red">{{ form.ValidationError  }}</div> -->
-                <!-- <div style="color:red">{{ form.errors.as_text  }}</div> -->
-                <p style="color: red;"> {{ error }} <p>
+<div class="container" style="min-height: 637px;">
+    <div class="row  w-100">
+        <div class="col-12 mb-4">
+        </div>
+        <div class="col-12 mb-4">
+        </div>
+        <div class="col-lg-4 bg-primary offset-lg-4 mt-4">
+            <form class="mb-1 mt-1 px-4 py-4 " method="post" enctype="multipart/form-data">{% csrf_token %}
+                <h5 class="display-5  h2 text-center text-white">Administrador de Blog</h5>
                     {{form.as_p}}
                     <div class="text-center px-2 py-3">
                         <input type="submit" class="btn btn-success btn-block" value="Ingresar" />
@@ -23,10 +23,11 @@
                         <a class="btn btn-warning btn-block" href="{% url 'users_app:user-register'%}">Registrar</a>
                     </div>
             </form>
-            </div>
         </div>
 
     </div>
+
+</div>
         
 {% endblock content %}
 

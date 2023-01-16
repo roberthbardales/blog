@@ -6,17 +6,20 @@
 
 {% include "includes/header.html" %}
 
-<div class="container" style="min-height: 613px;">
-<div class="row mt-4 mb-4 mx-auto w-75">
-    <div class="col-12  text-light" style="background-color: rgb(0, 147, 252);">
-        
-        <div class="col-12">
-            <p class="display h2 mt-4 text-center">
-                Ingrese sus Datos
-            </p>
+<div class="container" style="min-height: 637px;">
+    <div class="row  w-100">
+            
+        <div class="col-12 mb-4">
+
         </div>
+
+    <div class="col-lg-6 bg-primary offset-lg-3 mb-4  text-light">
+
+        <p class="display h2 mt-4 text-center">
+            Ingrese sus Datos
+        </p>
         <div class="col-12 mb-4 mt-4">
-            <form class="form-contorl" method="post" enctype="multipart/form-data">{% csrf_token %}
+            <form class="form-contorl " method="post" enctype="multipart/form-data">{% csrf_token %}
 
                 <div class="form-row">
                     <div class="form-group col-md-12">

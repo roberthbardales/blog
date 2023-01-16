@@ -1,7 +1,7 @@
 {% load  static %}
 <div class="row">
     <div class="col-12">
-        <nav class="navbar navbar-expand-sm navbar-dark bg-primary fixed-top ">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top ">
             <div class="container">
                 <a class="navbar-brand d-sm-none d-lg-block" href="{% url 'home_app:index' %}"><img class="img-fluid " src="{% static 'img/logo2.jpg' %}" style="max-height: 3rem;"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,51 +9,45 @@
                 </button>
                 <div class="collapse navbar-collapse d-sm-none d-md-block" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'home_app:index' %}">Inicio<span class="sr-only"></span></a>
+                    <li class="nav-item  mx-1">
+                        <a class="nav-link btn btn-outline-success text-white" href="{% url 'home_app:index' %}">Inicio<span class="sr-only"></span></a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{% url 'entrada_app:entry-lista' %}">Blog</a>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link btn btn-outline-success text-white" href="{% url 'entrada_app:entry-lista' %}">Blog</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item  mx-1">
                         {% if not user.is_anonymous %}
-                        <a class="nav-link" href="{% url 'entrada_app:add-entrada' %}">Nuevo Post<span class=""></span></a>
+                        <a class="nav-link btn btn-outline-success text-white" href="{% url 'entrada_app:add-entrada' %}">Agregar<span class=""></span></a>
                         {% else %}
                         <span hidden="hidden">Error oculto</span>
                         {% endif %}
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item  mx-1">
                         {% if not user.is_anonymous %}
-                        <a href="{% url 'favoritos_app:perfil' %}" class="btn btn-warning h4">Ver Perfil</a>
-                        <a href="{% url 'users_app:user-logout' %}"  class="btn btn-danger h4">Salir</a>
+                        <a href="{% url 'favoritos_app:perfil' %}" class="nav-link btn btn-warning text-dark">Perfil</a>
                         {% else %}
-                        <a href="{% url 'users_app:user-login' %}" class="btn btn-success">Iniciar Sesion</a>
+                        <a href="{% url 'users_app:user-login' %}" class="nav-link btn btn-success text-white">Iniciar Sesion</a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item mx-1">
+                        {% if not user.is_anonymous %}
+                        <a href="{% url 'users_app:user-logout' %}"  class="nav-link btn btn-danger text-white ">Salir</a>
+
                         {% endif %}
                     </li>
 
                         {% if not user.is_anonymous %}
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'favoritos_app:perfil' %}">{{user.full_name}}</a>
+                        <li class="nav-item mx-1">
+                            <a class="nav-link text-white" href="{% url 'favoritos_app:perfil' %}">{{user.full_name}}</a>
                         </li>
                             {% else %}
-                            <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'users_app:user-login' %}">Usuario: Anonimo</a>
+                            <li class="nav-item mx-1">
+                            <a class="nav-link btn text-white" href="{% url 'users_app:user-login' %}">Usuario: Anonimo</a>
                         </li>
                             {% endif %}
  
-
                     </ul>
-                    <!-- <ul class="navbar-nav ml-auto">
-                        {% if not user.is_anonymous %}
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'favoritos_app:perfil' %}">{{user.full_name}}</a>
-                        </li>
-                            {% else %}
-                            <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'users_app:user-login' %}">Usuario: Anonimo</a>
-                        </li>
-                            {% endif %}
-                    </ul> -->
+
                     <form method="get" action="{% url 'entrada_app:entry-lista' %}" class="form-inline my-2 my-lg-0">{% csrf_token %}
                         <input class="form-control mr-sm-2" id="kword" name="kword" type="search" placeholder="Buscar" aria-label="Search">
                         <button class="btn btn-dark my-2 my-sm-0" type="submit">Buscar</button>

@@ -6,18 +6,19 @@
 
 {% include "includes/header.html" %}
 
-<div class="container" style="min-height: 613px;">
+<div class="container" style="min-height: 637px;">
     <div class="row mt-4 mb-4 px-4 py-4 mx-auto w-100">
+      <table class="table table-hover table-dark table-responsive-sm table-responsive-md table-responsive-mlg">
+        
         <div class="col-12">
-            <h1 class="display-4 text-dark text-center">Lista de Usuarios</h1>
+            <h3 class="text-dark text-center">Usuarios</h3>
         </div>
         <div class="col-12 mt-4 mb-4 ">
-            <h4>Usuario Actual: </h4>
-            <h4>{{user}}</h4>
+            <h5>Usuario Actual: </h5>
+            <h5>{{user}}</h5>
         </div>
         <div class="col-12">
-        <table class="table table-hover table-dark table-responsive-sm table-responsive-md table-responsive-mlg">
-            <thead>
+          <thead>
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nombre</th>

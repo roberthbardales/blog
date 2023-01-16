@@ -58,7 +58,7 @@ class EntryListView(ListView):
     
     def get_context_data(self, **kwargs):
         context = super(EntryListView, self).get_context_data(**kwargs)
-        context['categorias']=Category.objects.all()
+        context['categorias']=Category.objects.all().order_by('name')
 
         return context
     

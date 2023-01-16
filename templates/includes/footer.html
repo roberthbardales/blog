@@ -1,42 +1,43 @@
 
-<div class="row mb-4 justify-content-center px-4 py-4" >
-      <div class="col order-first bg-primary ">
+<div class="container">
+  <div class="row mb-4 justify-content-center px-4 py-4" >
+      <div class="col col-sm-8 col-lg-7 order-first bg-primary ">
         <div class="div px-4">
-          
-        <form class="mb-4" method="post" action="{% url 'home_app:add-contact' %}">{% csrf_token %}
-          <h1 class="mb-4 display-4 h2 text-center text-white">Envia  un Mensaje</h1>
-          <div class="row mb-4">
-            <div class="col-6">
-            <div class="form-outline mt-4">
-              <p class="form-label text-light" for="">Nombres</p>
-              <input type="text" name="full_name" id="id_full_name" class="form-control" placeholder="Ingresa tu Nombre">
+
+          <form class="mb-4" method="post" action="{% url 'home_app:add-contact' %}">{% csrf_token %}
+            <h1 class="mb-4 display-4 h2 text-center text-white">Envia  un Mensaje</h1>
+            <div class="row mb-4">
+              <div class="col-6">
+              <div class="form-outline mt-4">
+                <p class="form-label text-light" for="">Nombres</p>
+                <input type="text" name="full_name" id="id_full_name" class="form-control" placeholder="Ingresa tu Nombre">
+              </div>
+              </div>
+              <div class="col-6">
+              <div class="form-outline mt-4">
+                <p class="form-label text-light" for="">Correo</p>
+                <input type="email" name="email" id="id_email" class="form-control" placeholder="abc@gmail.com">
+              </div>
+              </div>
             </div>
+            <div class="form-group mb-4">
+              <p for="" class="text-light">Mensaje</p>
+              <input type="text" class="form-control" name="messagge" id="id_messagge" placeholder="Escribe tu Mensaje" >
             </div>
-            <div class="col-6">
-            <div class="form-outline mt-4">
-              <p class="form-label text-light" for="">Correo</p>
-              <input type="email" name="email" id="id_email" class="form-control" placeholder="abc@gmail.com">
+            <div class="text-center">
+              <button type="submit" class="btn btn-success btn-lg btn-block mt-2 text-center">Enviar</button>
             </div>
-            </div>
-          </div>
-          <div class="form-group mb-4">
-            <p for="" class="text-light">Mensaje</p>
-            <input type="text" class="form-control" name="messagge" id="id_messagge" placeholder="Escribe tu Mensaje" >
-          </div>
-          <div class="text-center">
-            <button type="submit" class="btn btn-success btn-lg btn-block mt-2 text-center">Enviar</button>
-          </div>
-        </form>
-        
+          </form>
+        </div>
       </div>
-      </div>
-      <div class="col order-last ">
+      <div class="col-sm-4 col-lg-5 order-last ">
         <h1 class="mb-4 display-4 h2 text-center">Contacto</h1>
-        <div class="col text-center " style="font-size: 22px;">
-            <strong class="mt-4 mb-4">Email: </strong><p class="mt-2">{{correo}}</p>
-            <strong class="mt-4 mb-4">Telefono: </strong><p class="mt-2">{{phone}}</p>
-            <strong class="mt-4 mb-4">Direccion: </strong><p class="mt-2">Lima, Peru</p>
+        <div class="col text-center " style="font-size: 18px;">
+            <strong class="mb-4">Email: </strong><p class="">{{correo}}</p>
+            <strong class="mb-4">Telefono: </strong><p class="">{{phone}}</p>
+            <strong class="mb-4">Direccion: </strong><p class="">Lima, Peru</p>
             <br>
         </div>
       </div>
+  </div>
 </div>
