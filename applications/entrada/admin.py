@@ -1,6 +1,6 @@
-#terceros
-from import_export import resources
-from import_export.admin import ImportExportModelAdmin
+# #terceros
+# from import_export import resources
+# from import_export.admin import ImportExportModelAdmin
 
 from django.contrib import admin
 #
@@ -10,14 +10,14 @@ from .models import Category,Tag,Entry
 admin.site.register(Tag)
 # admin.site.register(Entry)
 
-class EntryResources(resources.ModelResource):
+# class EntryResources(resources.ModelResource):
 
-    fields=('__all__')
-    class Meta:
-        model=Entry
+#     fields=('__all__')
+#     class Meta:
+#         model=Entry
 
-class EntryAdmin(ImportExportModelAdmin):
-    resource_class=EntryResources
+class EntryAdmin(admin.ModelAdmin):
+    # resource_class=EntryResources
     list_display = (
         'id',
         'title',
