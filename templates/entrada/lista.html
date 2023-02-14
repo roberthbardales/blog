@@ -62,7 +62,7 @@
                                     {% if page_obj.has_previous %}
                                     <li class="page-item">
                                         <!-- <a href="?page={{page_obj.previous_page_number}}">Atras</a> -->
-                                        <a class="page-link" href="?{{ request.GET.urlencode }}&page={{pagina}}"" tabindex="-1">Atras</a>
+                                        <a class="page-link" href="?{{ request.GET.urlencode }}&page={{page_obj.previous_page_number}}" tabindex="-1">Atras</a>
                                     </li>
                                     {% endif %}
                                     {% for pagina in paginator.page_range %}
