@@ -1,6 +1,10 @@
-from django.db.models import Q
-
 from django.db import models
+
+
+from django.db.models import Q
+from django.contrib.postgres.search import TrigramSimilarity
+
+
 
 class EntryManager(models.Manager):
     #procedmiento para entrada
@@ -31,6 +35,8 @@ class EntryManager(models.Manager):
         if len(categoria)> 0:
             return self.filter(
                 category__short_name=categoria,
+                title__icontains=kword,
+                
                 public = True
             ).order_by('-created')
 
@@ -38,27 +44,11 @@ class EntryManager(models.Manager):
             return self.filter(
                 Q(title__icontains=kword,) |
                 Q(resume__icontains=kword,) |
-                Q(content__icontains=kword,),
+                Q(content__icontains=kword,) |
+                Q(title__trigram_similar=kword,) |
+                Q(content__trigram_similar=kword,),
                 public = True,
-            ).order_by('-created')
-
-    def buscador_general(self,kword_general,categoria):
-        if len(categoria)> 0:
-            return self.filter(
-                category__short_name=categoria,
-                title__icontains=kword_general,
                 
-                public = True
             ).order_by('-created')
-
-        else:
-            return self.filter(
-                Q(title__icontains=kword_general,) |
-                Q(resume__icontains=kword_general,) |
-                Q(content__icontains=kword_general,),
-                public = True,
-            ).order_by('-created')[:50]
-
-
 
 

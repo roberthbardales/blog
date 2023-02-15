@@ -49,7 +49,7 @@
                     </ul>
 
                     <form method="get" action="{% url 'entrada_app:entry-lista' %}" class="form-inline my-2 my-lg-0">{% csrf_token %}
-                        <input class="form-control mr-sm-2" id="kword" name="kword" type="search" placeholder="Buscar" aria-label="Search">
+                        <input class="form-control mr-sm-2" id="kword" name="kword" type="search" placeholder="Buscar" aria-label="Search" value="{{request.GET.kword}}">
                         <button class="btn btn-dark my-2 my-sm-0" type="submit">Buscar</button>
                     </form>
 

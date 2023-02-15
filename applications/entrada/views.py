@@ -30,24 +30,24 @@ from applications.users.mixins import (
 #         contexto_russell['russell']=Entry.objects.buscador_general()
 #         return contexto_russell
 
-class EntryListViewBySearch(ListView):
-    template_name = "entrada/lista.html"
-    context_object_name ='entradas'
-    paginate_by = 9
+# class EntryListViewBySearch(ListView):
+#     template_name = "entrada/lista.html"
+#     context_object_name ='entradas'
+#     paginate_by = 9
 
-    def get_context_data(self, **kwargs):
-        context = super(EntryListViewBySearch, self).get_context_data(**kwargs)
-        context['categorias']=Category.objects.all()
+#     def get_context_data(self, **kwargs):
+#         context = super(EntryListViewBySearch, self).get_context_data(**kwargs)
+#         context['categorias']=Category.objects.all()
 
-        return context
+#         return context
 
-    def get_queryset(self):
-        kword_general= self.request.GET.get('kword_general','')
-        categoria= self.request.GET.get('categoria','')
-        #consulta de busqueda
-        resultado= Entry.objects.buscador_general(kword_general,categoria)
+#     def get_queryset(self):
+#         kword_general= self.request.GET.get('kword_general','')
+#         categoria= self.request.GET.get('categoria','')
+#         #consulta de busqueda
+#         resultado= Entry.objects.buscador_general(kword_general,categoria)
 
-        return resultado
+#         return resultado
 
 
 
